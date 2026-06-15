@@ -19,11 +19,9 @@ function addBookToLibrary(title, author, pages, read, id, library){
   library.push(book);
 };
 
-const myLibrary = [];
-// const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false, crypto.randomUUID());
-
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 295, false, crypto.randomUUID(), myLibrary);
-
-console.log("Library: ", myLibrary);
+const myLibrary = [
+  new Book("The Hobbit", "J.R.R Tolkien", 295, false, crypto.randomUUID()),
+  new Book("A Little Life", "Hanya Yanagihara", 738, true, crypto.randomUUID()),
+];
 
 
