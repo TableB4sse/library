@@ -23,6 +23,80 @@ body {
   background-color: var(--main-bg-color);
   color: var(--text-color);
   font-family: 'Comfortaa', sans-serif;
+
+  .book-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffff;
+    background-color: var(--header-color);
+    border: 3px solid var(--button-color);
+    border-radius: 10px;
+
+    &::backdrop {
+      backdrop-filter: blur(3px);
+    }
+    
+  }
+
+  .book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.3rem 2rem;
+  }
+
+  .book-form-title {
+    text-align: center;
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+
+    .add-button, .cancel-button{
+      background-color: var(--button-color);
+      padding: 0.5rem 1rem; 
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: #38b2a3;
+      }
+
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    background-color: #3b6879;
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    input {
+      border-radius: 7px;
+    }
+    #number-pages {
+      max-width: 4rem;
+      justify-self: start;
+    }
+  }
+
+  .checkbox-group {
+    display: flex;
+  }
+}
+
+button {
+  font-family: inherit;
 }
 
 
@@ -80,15 +154,29 @@ header {
       top: 0;
       right: 1.5rem;
       padding: 0.4rem 0.4rem;
-      border-top: none;
+      /* border-top: none; */
+      border: none;
       letter-spacing: 1px;
-      font-size: 0.75rem;
+      background-color: lightgray;
+      font-size: 0.8rem;
       border-bottom-right-radius: 8px;
       border-bottom-left-radius: 8px;
+
+      &:hover {
+        transform: translateY(-2px);
+        background-color: lightgray;
+      }
+      &:active {
+        transform: translateY(2px);
+      }
+
     }
     .read {
       background-color: var(--button-color);
 
+      &:hover {
+        background-color: var(--button-color);
+      }
     }
 
     .title {
@@ -108,7 +196,5 @@ header {
     }
 
   }
-
-
 
 }

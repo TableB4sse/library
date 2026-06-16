@@ -1,4 +1,3 @@
-
 function Book(title, author, pages, isRead, id){
   if (!new.target) {
     throw Error("You must use the 'new' operator to call the constructor");
@@ -21,7 +20,7 @@ function addBookToLibrary(title, author, pages, read, id, library){
 
 function removeBook(){
   console.log("test remove book");
-};
+}
 
 function displayBook(library){
   const libraryContainer = document.querySelector(".library-container");
@@ -46,6 +45,7 @@ function displayBook(library){
     readButton.addEventListener("click", () => {
       book.isRead = !book.isRead;
       readButton.classList.toggle("read");
+
     });
 
     title.textContent = book.title;
@@ -66,7 +66,25 @@ function displayBook(library){
     libraryContainer.append(divBook);
 
   });
-};
+}
+
+const newBookButton = document.querySelector(".new-book-btn");
+const bookModal = document.querySelector(".book-modal");
+const addButton = document.querySelector(".add-button");
+const cancelButton = document.querySelector(".cancel-button");
+
+function openBookModal() {
+  bookModal.showModal();
+}
+
+function closeBookModal(){
+  bookModal.close();
+}
+
+function setupEventListeners () {
+  newBookButton.addEventListener("click", openBookModal);
+  cancelButton.addEventListener("click", closeBookModal);
+}
 
 const myLibrary = [
   new Book("The Hobbit", "J.R.R. Tolkien", 295, false, crypto.randomUUID()),
@@ -83,4 +101,7 @@ const myLibrary = [
   new Book("The Three-Body Problem", "Liu Cixin", 416, false, crypto.randomUUID()),
 ];
 
+
+setupEventListeners();
 displayBook(myLibrary);
+
