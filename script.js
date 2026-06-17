@@ -84,6 +84,7 @@ function openBookModal() {
 }
 
 function closeBookModal(){
+  bookForm.reset();
   bookModal.close();
 }
 
@@ -99,7 +100,6 @@ function setupEventListeners (library) {
   bookForm.addEventListener("submit", (event) => {
     event.preventDefault();
     addBook(library);
-    bookForm.reset();
     closeBookModal();
     displayBook(library);
   });
