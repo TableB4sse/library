@@ -77,6 +77,7 @@ const newBookButton = document.querySelector(".new-book-btn");
 const bookModal = document.querySelector(".book-modal");
 const addButton = document.querySelector(".add-button");
 const cancelButton = document.querySelector(".cancel-button");
+const bookForm = document.querySelector(".book-form");
 
 function openBookModal() {
   bookModal.showModal();
@@ -86,9 +87,22 @@ function closeBookModal(){
   bookModal.close();
 }
 
-function setupEventListeners () {
+function addBook(library){
+  const bookData = new FormData(bookForm);
+  const bookId = crypto.randomUUID();
+  addBookToLibrary(bookData.get("title"), bookData.get("author"), bookData.get("pages"), bookData.has("isRead"), bookId, library);
+}
+
+function setupEventListeners (library) {
   newBookButton.addEventListener("click", openBookModal);
   cancelButton.addEventListener("click", closeBookModal);
+  bookForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addBook(library);
+    bookForm.reset();
+    closeBookModal();
+    displayBook(library);
+  });
 }
 
 const myLibrary = [
@@ -106,5 +120,5 @@ const myLibrary = [
   new Book("The Three-Body Problem", "Liu Cixin", 416, false, crypto.randomUUID()),
 ];
 
-setupEventListeners();
+setupEventListeners(myLibrary);
 displayBook(myLibrary);
