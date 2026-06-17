@@ -115,11 +115,7 @@ const myLibrary = [
   new Book("The Three-Body Problem", "Liu Cixin", 416, false, crypto.randomUUID()),
 ];
 
-<<<<<<< HEAD
 
-setupEventListeners();
-=======
 setupEventListeners(myLibrary);
->>>>>>> 40203d7 (Implement user adding book from the book modal form)
 displayBook(myLibrary);
 
