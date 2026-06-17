@@ -18,12 +18,17 @@ function addBookToLibrary(title, author, pages, read, id, library){
   library.push(book);
 };
 
-function removeBook(){
-  console.log("test remove book");
+
+function removeBook(library, bookId){
+  const bookIndex = library.findIndex((book) => book.id == bookId );
+  library.splice(bookIndex, 1);
+  displayBook(library);
 }
+
 
 function displayBook(library){
   const libraryContainer = document.querySelector(".library-container");
+  libraryContainer.textContent = "";
 
   library.forEach((book) => {
     const divBook = document.createElement("div");
@@ -58,7 +63,7 @@ function displayBook(library){
     removeButton.textContent = "Remove";
     removeButton.classList.add("remove-btn");
     removeButton.addEventListener("click", () => {
-      removeBook();
+      removeBook(library, book.id);
     });
 
     divBook.append(readButton, title, author, pages, removeButton);
@@ -101,7 +106,5 @@ const myLibrary = [
   new Book("The Three-Body Problem", "Liu Cixin", 416, false, crypto.randomUUID()),
 ];
 
-
 setupEventListeners();
 displayBook(myLibrary);
-
